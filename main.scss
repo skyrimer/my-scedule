@@ -1,0 +1,157 @@
+*,
+*:before,
+*:after {
+  padding: 0;
+  margin: 0;
+  border: 0;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+:focus,
+:active {
+  outline: none;
+}
+a:focus,
+a:active {
+  outline: none;
+}
+
+html,
+body {
+  height: 100%;
+  width: 100%;
+  font-size: 100%;
+  line-height: 1;
+  font-size: 14px;
+  -ms-text-size-adjust: 100%;
+  -moz-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+}
+input,
+button,
+textarea {
+  font-family: inherit;
+}
+
+input::-ms-clear {
+  display: none;
+}
+button {
+  cursor: pointer;
+}
+button::-moz-focus-inner {
+  padding: 0;
+  border: 0;
+}
+a,
+a:visited {
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: none;
+}
+img {
+  vertical-align: middle;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-size: inherit;
+}
+:root {
+  --color-background-value: 17, 32, 49;
+  --color-background: rgb(var(--color-background-value));
+  --color-background-light: #152d35;
+  --color-background-lighter: #345b63;
+  --color-accent: #5891ff;
+  --color-text-value: 255, 255, 255;
+  --color-text: rgb(var(--color-text-value));
+  --color-lesson: #ff7600;
+  --color-extra: #ff00f2;
+  --color-teacher: #00ff22;
+  --color-time: rgba(var(--color-text-value), 0.7);
+}
+
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background-image: url("mountain1.jpg");
+  background-position: center;
+  background-size: cover;
+}
+:root {
+  font-family: "Roboto", sans-serif;
+}
+table {
+  width: 90vw;
+  border-collapse: collapse;
+  overflow: hidden;
+  backdrop-filter: blur(16px) saturate(200%);
+  background-color: rgba(var(--color-background-value), 0.75);
+  border-radius: 1em;
+}
+
+p {
+  font-size: inherit;
+  width: max-content;
+  line-height: 1.2;
+  font-weight: 400;
+}
+th,
+td {
+  font-size: 1rem;
+  padding: 1em;
+  color: var(--color-text);
+  transition: all 0.2s ease-in-out;
+  p {
+    transition: all 0.2s ease-in-out;
+    color: var(--color-text);
+  }
+}
+tr.brake {
+  td {
+    padding: 0 0 0 1em;
+  }
+}
+th {
+  text-align: left;
+  background-color: var(--color-background-light);
+  p {
+    font-weight: 700;
+  }
+}
+td:not(.empty):hover,
+td:not(.empty).current {
+  background-color: rgba(var(--color-text-value), 0.8);
+  p {
+    color: var(--color-background);
+  }
+  p.time {
+    color: var(--color-background);
+  }
+}
+td,
+th {
+  p.lesson {
+    color: var(--color-lesson) !important;
+  }
+  p.extra {
+    color: var(--color-extra) !important;
+  }
+  p.teacher {
+    color: var(--color-teacher) !important;
+  }
+  p.time {
+    color: var(--color-time);
+  }
+  p.day {
+    color: var(--color-text) !important;
+  }
+}

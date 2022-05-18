@@ -64,16 +64,15 @@ h6 {
   font-size: inherit;
 }
 :root {
-  --color-background-value: 17, 32, 49;
+  --color-background-value: 17, 25, 40;
   --color-background: rgb(var(--color-background-value));
-  --color-background-light: #152d35;
-  --color-background-lighter: #345b63;
-  --color-accent: #5891ff;
-  --color-text-value: 255, 255, 255;
+  --color-background-light: #04293a;
+  --color-accent: #064663;
+  --color-text-value: 246, 246, 246;
   --color-text: rgb(var(--color-text-value));
-  --color-lesson: #ff7600;
-  --color-extra: #ff00f2;
-  --color-teacher: #00ff22;
+  --color-lesson: #ecb365;
+  --color-extra: #c996cc;
+  --color-teacher: #4e9f3d;
   --color-time: rgba(var(--color-text-value), 0.7);
 }
 
@@ -82,7 +81,7 @@ body {
   align-items: center;
   justify-content: center;
   min-height: 100vh;
-  background-image: url("mountain1.jpg");
+  background-image: url("mountain8.jpg");
   background-position: center;
   background-size: cover;
 }
@@ -93,8 +92,8 @@ table {
   width: 90vw;
   border-collapse: collapse;
   overflow: hidden;
-  backdrop-filter: blur(16px) saturate(200%);
-  background-color: rgba(var(--color-background-value), 0.75);
+  backdrop-filter: blur(1px) saturate(200%);
+  background-color: rgba(var(--color-background-value), 0.8);
   border-radius: 1em;
 }
 
@@ -129,12 +128,12 @@ th {
 }
 td:not(.empty):hover,
 td:not(.empty).current {
-  background-color: rgba(var(--color-text-value), 0.8);
-  p {
-    color: var(--color-background);
-  }
+  background-color: var(--color-accent);
+  // p {
+  //   color: var(--color-background);
+  // }
   p.time {
-    color: var(--color-background);
+    color: var(--color-time);
   }
 }
 td,

@@ -1,3 +1,17 @@
+const times = [
+  "8:15 - 8:55",
+  "9:00 - 9:40",
+  "9:45 - 10:25",
+  "10:45 - 11:25",
+  "11:30 - 12:10",
+  "12:15 - 12:55",
+  "13:00 - 13:45",
+  "13:45 - 14:25",
+  "14:30 - 15:10",
+  "15:15 - 15:55",
+  "16:00 - 16:40",
+  "16:45 - 17:25",
+];
 const subjectList = [
   "Physics",
   "English",
@@ -12,9 +26,22 @@ const subjectList = [
   "CAS",
 ].join(",");
 const weekDays = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"].join(",");
+
+const nextSiblings = (elem) => {
+  // create an empty array
+  let siblings = [];
+
+  // loop through next siblings until `null`
+  while ((elem = elem.nextElementSibling)) {
+    // push sibling to array
+    siblings.push(elem);
+  }
+  return siblings;
+};
+
 document.querySelectorAll("p").forEach((paragraph) => {
   const textContent = paragraph.textContent;
-  if (textContent.includes("Mr")) {
+  if (textContent.includes("Mr") || textContent.includes("Ms")) {
     paragraph.classList.add("teacher");
   } else if ("Guitar".includes(textContent)) {
     paragraph.classList.add("extra");
@@ -27,41 +54,11 @@ document.querySelectorAll("p").forEach((paragraph) => {
   }
 });
 
-const getDateFromTableTime = (time) => {
-  let date = new Date();
-  date.setHours(time.split(":")[0]);
-  date.setMinutes(time.split(":")[1]);
-  return date;
-};
-const getWeekdayOrder = (currentDate) => {
-  const weekdays = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"];
-  const currentWeekday = currentDate.toLocaleDateString("en-us", { weekday: "long" });
-  for (let index = 0; index < weekdays.length; index++) {
-    const weekday = weekdays[index];
-    if (weekday == currentWeekday) {
-      return index;
-    }
-  }
-};
-const highlightCell = (time, weekdayOrder) => {
-  time.parentElement.parentElement
-    .querySelector(`td:nth-child(${weekdayOrder})`)
-    .classList.add("current");
-};
-const currentDate = new Date();
-const weekdayOrder = getWeekdayOrder(currentDate) + 2;
-
-document.querySelectorAll("tr td:first-child p").forEach((time) => {
-  const timeSplitted = time.textContent.split(" - ");
-  let startTime = getDateFromTableTime(timeSplitted[0]);
-  let endTime = getDateFromTableTime(timeSplitted[1]);
-
-  if (currentDate > startTime && currentDate < endTime) {
-    highlightCell(time, weekdayOrder);
-  }
-});
-document.querySelectorAll("td").forEach((cell) => {
-  if (cell.textContent == "") {
-    cell.classList.add("empty");
-  }
-});
+timeCells = document.querySelectorAll("tr td:first-child p");
+for (let index = 0; index < timeCells.length; index++) {
+  let time = timeCells[index];
+  time.textContent = times[index];
+  nextSiblings(time.parentElement).forEach((cell) => {
+    cell.setAttribute("data-label", time.textContent);
+  });
+}

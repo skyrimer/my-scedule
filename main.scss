@@ -129,9 +129,6 @@ th {
 td:not(.empty):hover,
 td:not(.empty).current {
   background-color: var(--color-accent);
-  // p {
-  //   color: var(--color-background);
-  // }
   p.time {
     color: var(--color-time);
   }

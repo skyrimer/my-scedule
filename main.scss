@@ -71,9 +71,11 @@ h6 {
   --color-text-value: 246, 246, 246;
   --color-text: rgb(var(--color-text-value));
   --color-lesson: #ecb365;
-  --color-extra: #c996cc;
+  --color-natural-science: #c996cc;
   --color-teacher: #4e9f3d;
   --color-time: rgba(var(--color-text-value), 0.7);
+  --color-other: #f96666;
+  --color-human-science: #277bc0;
 }
 
 body {
@@ -135,14 +137,20 @@ td:not(.empty).current {
 }
 td,
 th {
-  p.lesson {
+  p.languages {
     color: var(--color-lesson) !important;
   }
-  p.extra {
-    color: var(--color-extra) !important;
+  p.natural-science {
+    color: var(--color-natural-science) !important;
   }
   p.teacher {
     color: var(--color-teacher) !important;
+  }
+  p.human-science {
+    color: var(--color-human-science) !important;
+  }
+  p.other {
+    color: var(--color-other) !important;
   }
   p.time {
     color: var(--color-time);

@@ -1,24 +1,18 @@
-*,
-*:before,
-*:after {
+*, *:before, *:after {
   padding: 0;
   margin: 0;
   border: 0;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
   box-sizing: border-box;
 }
-
-:focus,
-:active {
+:focus, :active {
   outline: none;
 }
-
-a:focus,
-a:active {
+a:focus, a:active {
   outline: none;
 }
-
-html,
-body {
+html, body {
   height: 100%;
   width: 100%;
   font-size: 100%;
@@ -28,111 +22,83 @@ body {
   -moz-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
 }
-
-input,
-button,
-textarea {
+input, button, textarea {
   font-family: inherit;
 }
-
 input::-ms-clear {
   display: none;
 }
-
 button {
   cursor: pointer;
 }
-
 button::-moz-focus-inner {
   padding: 0;
   border: 0;
 }
-
-a,
-a:visited {
+a, a:visited {
   text-decoration: none;
 }
-
 a:hover {
   text-decoration: none;
 }
-
 img {
   vertical-align: middle;
 }
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
+h1, h2, h3, h4, h5, h6 {
   font-size: inherit;
 }
-
 :root {
   --color-background-value: 17, 25, 40;
-  --color-background: rgb(var(--color-background-value));
-  --color-background-light: #04293a;
-  --color-accent: #064663;
+  --color-background-light: rgb(var(--color-background-value));
   --color-text-value: 246, 246, 246;
   --color-text: rgb(var(--color-text-value));
   --color-lesson: #ecb365;
-  --color-extra: #c996cc;
+  --color-natural-science: #f96666;
   --color-teacher: #4e9f3d;
   --color-time: rgba(var(--color-text-value), 0.7);
+  --color-other: #542E71;
+  --color-human-science: #98DED9;
 }
-
 body {
-  display: flex;
-  align-items: center;
-  justify-content: center;
   min-height: 100vh;
   background-image: url("mountain8.jpg");
   background-position: center;
   background-size: cover;
 }
-
 :root {
   font-family: "Roboto", sans-serif;
 }
-
+.wrapper {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  width: 95vw;
+  margin-inline: auto;
+}
 table {
-  width: 90vw;
+  width: 100%;
   border-collapse: collapse;
-  overflow: hidden;
-  -webkit-backdrop-filter: blur(1px) saturate(200%);
-          backdrop-filter: blur(1px) saturate(200%);
-  background-color: rgba(var(--color-background-value), 0.8);
+  overflow:  auto hidden;
+  backdrop-filter: blur(4px) saturate(200%);
+  background-color: rgba(var(--color-background-value), 0.7);
   border-radius: 1em;
 }
-
 p {
   font-size: inherit;
-  width: -webkit-max-content;
-  width: -moz-max-content;
   width: max-content;
   line-height: 1.2;
   font-weight: 400;
 }
-
-th,
-td {
+th, td {
   font-size: 1rem;
   padding: 1em;
   color: var(--color-text);
   transition: all 0.2s ease-in-out;
 }
-th p,
-td p {
+th p, td p {
   transition: all 0.2s ease-in-out;
   color: var(--color-text);
 }
-
-tr.brake td {
-  padding: 0 0 0 1em;
-}
-
 th {
   text-align: left;
   background-color: var(--color-background-light);
@@ -140,33 +106,33 @@ th {
 th p {
   font-weight: 700;
 }
-
-td:not(.empty):hover,
-td:not(.empty).current {
-  background-color: var(--color-accent);
+tr.lunch td:nth-child(n+2) p {
+  opacity: 0.5;
 }
-td:not(.empty):hover p.time,
-td:not(.empty).current p.time {
+td:hover {
+  background-color: rgba(191, 203, 255, 0.2);
+}
+td:not(.empty):hover p.time, td:not(.empty).current p.time {
   color: var(--color-time);
 }
-
-td p.lesson,
-th p.lesson {
+td p.languages, th p.languages {
   color: var(--color-lesson) !important;
 }
-td p.extra,
-th p.extra {
-  color: var(--color-extra) !important;
+td p.natural-science, th p.natural-science {
+  color: var(--color-natural-science) !important;
 }
-td p.teacher,
-th p.teacher {
+td p.teacher, th p.teacher {
   color: var(--color-teacher) !important;
 }
-td p.time,
-th p.time {
+td p.human-science, th p.human-science {
+  color: var(--color-human-science) !important;
+}
+td p.other, th p.other {
+  color: var(--color-other) !important;
+}
+td p.time, th p.time {
   color: var(--color-time);
 }
-td p.day,
-th p.day {
+td p.day, th p.day {
   color: var(--color-text) !important;
-}/*# sourceMappingURL=main.css.map */
+}

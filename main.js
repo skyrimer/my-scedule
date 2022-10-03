@@ -10,30 +10,18 @@ const times = [
   "14:30 - 15:10",
   "15:15 - 15:55",
   "16:00 - 16:40",
-  "16:45 - 17:25",
 ];
-const subjectList = [
-  "Physics",
-  "English",
-  "Russian",
-  "Extended Essay",
-  "Economics",
-  "Mathematics",
-  "Advisory",
-  "Studyhall",
-  "Business",
-  "TOK",
-  "CAS",
-].join(",");
+const subjectList = {
+  "languages": ["English", "Russian"],
+  "natural-science": ["Physics", "Mathematics"],
+  "human-science": ["Economics", "Business"],
+  "other": ["Advisory", "TOK", "CAS"],
+};
 const weekDays = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"].join(",");
 
 const nextSiblings = (elem) => {
-  // create an empty array
   let siblings = [];
-
-  // loop through next siblings until `null`
   while ((elem = elem.nextElementSibling)) {
-    // push sibling to array
     siblings.push(elem);
   }
   return siblings;
@@ -41,12 +29,16 @@ const nextSiblings = (elem) => {
 
 document.querySelectorAll("p").forEach((paragraph) => {
   const textContent = paragraph.textContent;
+  for (subject in subjectList) {
+    if (subjectList[subject].join(", ").includes(textContent)) {
+      paragraph.classList.add(subject);
+      break;
+    }
+  }
   if (textContent.includes("Mr") || textContent.includes("Ms")) {
     paragraph.classList.add("teacher");
   } else if ("Guitar".includes(textContent)) {
     paragraph.classList.add("extra");
-  } else if (subjectList.includes(textContent)) {
-    paragraph.classList.add("lesson");
   } else if (weekDays.includes(textContent)) {
     paragraph.classList.add("day");
   } else if (/^\d/.test(textContent)) {

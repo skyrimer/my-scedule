@@ -12,10 +12,10 @@ const times = [
   "16:00 - 16:40",
 ];
 const subjectList = {
-  "languages": ["English", "Russian"],
+  languages: ["English", "Russian"],
   "natural-science": ["Physics", "Mathematics"],
   "human-science": ["Economics", "Business"],
-  "other": ["Advisory", "TOK", "CAS"],
+  other: ["Advisory", "TOK", "CAS"],
 };
 const weekDays = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"].join(",");
 
@@ -30,15 +30,17 @@ const nextSiblings = (elem) => {
 document.querySelectorAll("p").forEach((paragraph) => {
   const textContent = paragraph.textContent;
   for (subject in subjectList) {
-    if (subjectList[subject].join(", ").includes(textContent)) {
+    if (
+      subjectList[subject]
+        .join(", ")
+        .includes(textContent.replace("HL", "").replace("(Subject Atelier)", "").trim())
+    ) {
       paragraph.classList.add(subject);
       break;
     }
   }
   if (textContent.includes("Mr") || textContent.includes("Ms")) {
     paragraph.classList.add("teacher");
-  } else if ("Guitar".includes(textContent)) {
-    paragraph.classList.add("extra");
   } else if (weekDays.includes(textContent)) {
     paragraph.classList.add("day");
   } else if (/^\d/.test(textContent)) {
